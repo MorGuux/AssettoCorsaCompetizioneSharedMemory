@@ -159,17 +159,17 @@ namespace AssettoCorsaCompetizioneSharedMemory
         /// <summary>
         /// Interval for physics updates in milliseconds
         /// </summary>
-        public int PhysicsInterval;
+        public int PhysicsInterval = 16;
 
         /// <summary>
         /// Interval for graphics updates in milliseconds
         /// </summary>
-        public int GraphicsInterval;
+        public int GraphicsInterval = 100;
 
         /// <summary>
         /// Interval for static info updates in milliseconds
         /// </summary>
-        public int StaticInfoInterval;
+        public int StaticInfoInterval = 5000;
 
         /// <summary>
         /// Represents the method that will handle the physics update events
