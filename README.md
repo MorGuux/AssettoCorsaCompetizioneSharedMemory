@@ -7,6 +7,13 @@ Maff updated it to ACC 1.8.x from the documentation supplied [here](https://www.
 
 The code was built around the shared memory structures described [here](http://www.assettocorsa.net/forum/index.php?threads/shared-memory-reference.3352/) on the official Assetto Corsa forum
 
+## Improvements
+
+I have changed the following features of the library to enhance performance and readability:
+* Utilising `Tasks` and `Thread.Sleep(...)` instead of Timers (each memory pipeline is handled by a separate Task for concurrency.
+* Merged duplicated memory-mapped file access code to a single generic class `MemoryDataSection.cs`.
+* Updated `GameStatusChanged` event to fire once per state change (updated as regularly as `Graphics` packets are polled)
+
 ## Events
 
 There are four events to listen for:
