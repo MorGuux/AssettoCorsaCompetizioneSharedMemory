@@ -42,6 +42,7 @@ namespace AssettoCorsaCompetizioneSharedMemory
         public event GameStatusChangedHandler GameStatusChanged;
 
         private ACC_STATUS _gameStatus = ACC_STATUS.ACC_OFF;
+        private string carModel;
 
         internal ACC_STATUS GameStatus
         {
@@ -89,6 +90,7 @@ namespace AssettoCorsaCompetizioneSharedMemory
 
         private void _staticInfoData_DataUpdated(object sender, StaticInfo e)
         {
+            carModel = e.CarModel;
             StaticInfoUpdated?.Invoke(this, new StaticInfoEventArgs(e));
         }
 
@@ -102,6 +104,8 @@ namespace AssettoCorsaCompetizioneSharedMemory
 
         private void _physicsData_DataUpdated(object sender, Physics e)
         {
+            //Modify brake bias to offset using LUT (BrakeBiasLUT.cs)
+            e.BrakeBias = BrakeBiasLUT.GetBrakeBias(e.BrakeBias, carModel);
             PhysicsUpdated?.Invoke(this, new PhysicsEventArgs(e));
         }
 
